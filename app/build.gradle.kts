@@ -44,6 +44,7 @@ android {
 
 dependencies {
 
+    implementation(libs.gson)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -53,7 +54,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    
     // extension libraries
     // 외부 라이브러리는 여기에 작성
     implementation ("com.google.android.gms:play-services-maps:18.0.2")
@@ -61,4 +62,5 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database-ktx")
+    implementation(libs.zxing.android.embedded)
 }

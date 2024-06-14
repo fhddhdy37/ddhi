@@ -18,6 +18,11 @@
         android:theme="@style/Theme.Ddhi"
         tools:targetApi="31">
         <activity
+            android:name=".QRActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
             android:name=".DBtest"
             android:exported="false" />
         <!-- meta-data -->
