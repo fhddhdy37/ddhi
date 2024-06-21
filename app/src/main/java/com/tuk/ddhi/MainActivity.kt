@@ -21,6 +21,15 @@ class MainActivity : AppCompatActivity() {
         val bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
         requestLocationPermission()
+
+        bind.btn4.setOnClickListener {
+            var intent = Intent(this, QRActivity::class.java)
+            startActivity(intent)
+        }
+        bind.db.setOnClickListener {
+            var intent = Intent(this, DbTestActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun requestLocationPermission() {
