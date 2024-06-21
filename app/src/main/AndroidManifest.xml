@@ -18,14 +18,14 @@
         android:theme="@style/Theme.Ddhi"
         tools:targetApi="31">
         <activity
+            android:name=".DbTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".QRActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity2"
-            android:exported="false" />
-            android:name=".DBtest"
-            android:exported="false" />
-        <!-- meta-data -->
+            android:exported="false" /> <!-- meta-data -->
         <!-- API key는 여기에 작성 -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
