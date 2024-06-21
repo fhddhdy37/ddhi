@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Frag2">
+
+    <!-- Buttons for category and sort -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="카테고리" />
+
+        <Button
+            android:id="@+id/btnSort"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="정렬" />
+    </LinearLayout>
+
+    <!-- ScrollView for the list of stores -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/store_item_background">
+
+                <TextView
+                    android:id="@+id/storeInfoTextView1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="가게 정보 요약 표시"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/store_info_background"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/store_image_placeholder"
+                    android:contentDescription="사진"
+                    android:padding="8dp"
+                    android:background="@drawable/store_image_background" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/store_item_background">
+
+                <TextView
+                    android:id="@+id/storeInfoTextView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="가게 정보 요약 표시"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/store_info_background"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/store_image_placeholder"
+                    android:contentDescription="사진"
+                    android:padding="8dp"
+                    android:background="@drawable/store_image_background" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/store_item_background">
+
+                <TextView
+                    android:id="@+id/storeInfoTextView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="가게 정보 요약 표시"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/store_info_background"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/store_image_placeholder"
+                    android:contentDescription="사진"
+                    android:padding="8dp"
+                    android:background="@drawable/store_image_background" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/store_item_background">
+
+                <TextView
+                    android:id="@+id/storeInfoTextView4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="가게 정보 요약 표시"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/store_info_background"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/store_image_placeholder"
+                    android:contentDescription="사진"
+                    android:padding="8dp"
+                    android:background="@drawable/store_image_background" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/store_item_background">
+
+                <TextView
+                    android:id="@+id/storeInfoTextView5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="가게 정보 요약 표시"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/store_info_background"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/store_image_placeholder"
+                    android:contentDescription="사진"
+                    android:padding="8dp"
+                    android:background="@drawable/store_image_background" />
+            </LinearLayout>
+
+
+
+
+            <!-- Repeat this block to add more items as needed -->
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
