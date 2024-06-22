@@ -1,21 +1,20 @@
 package com.tuk.ddhi
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -23,54 +22,53 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.tuk.ddhi.databinding.ActivityMapsBinding
 import java.io.IOException
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val REQUEST_LOCATION_PERMISSION = 45
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_map, container, false)
+    }
 
-        val binding = ActivityMapsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
+        val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.isMyLocationEnabled = true
             getLastKnownLocation()
         } else {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
             }
         }
 
         mMap.setInfoWindowAdapter(CustomInfoWindowAdapter())
 
-//        val address = "경기 시흥시 중심상가로 184"
-//        val latLng = getLocationFromAddress(address)
-//        val markerOptions = MarkerOptions().position(latLng).title("제주 은희네 해장국")
-//        mMap.addMarker(markerOptions)
         addNewMarker("경기 시흥시 중심상가로 184", "제주 은희네 해장국")
         addNewMarker("경기 시흥시 중심상가 1길 18", "초지일관")
     }
 
     private fun getLastKnownLocation() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location: Location? ->
                     location?.let {
@@ -92,7 +90,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_LOCATION_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     mMap.isMyLocationEnabled = true
                     getLastKnownLocation()
                 }
@@ -103,7 +101,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun getLocationFromAddress(strAddress: String): LatLng {
-        val geocoder = Geocoder(this)
+        val geocoder = Geocoder(requireContext())
         return try {
             val addressList = geocoder.getFromLocationName(strAddress, 1)
             if (addressList != null && addressList.isNotEmpty()) {
@@ -121,7 +119,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     inner class CustomInfoWindowAdapter : GoogleMap.InfoWindowAdapter, GoogleMap.OnInfoWindowClickListener {
 
-        private val window: View = LayoutInflater.from(this@MapsActivity).inflate(R.layout.info_window, null)
+        private val window: View = LayoutInflater.from(requireContext()).inflate(R.layout.info_window, null)
 
         init {
             mMap.setOnInfoWindowClickListener(this)
@@ -156,10 +154,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         override fun onInfoWindowClick(p0: Marker) {
-            val intent = Intent(this@MapsActivity, MainActivity::class.java)
-            startActivity(intent)
+            // Implement info window click behavior
         }
     }
+
     private fun addNewMarker(strAddress: String, b_nm: String){
         val address = strAddress
         val latLng = getLocationFromAddress(address)
