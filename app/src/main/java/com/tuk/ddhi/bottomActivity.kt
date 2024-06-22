@@ -43,7 +43,7 @@ class bottomActivity : AppCompatActivity() {
 
         when (fragNum) {
             0 -> {
-                ft.replace(R.id.main_frame, MapsFragment()).commitNow()
+                ft.replace(R.id.main_frame, MapFragment()).commitNow()
             }
             1 -> {
                 ft.replace(R.id.main_frame, Frag2()).commitNow()

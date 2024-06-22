@@ -31,22 +31,16 @@
         <activity
             android:name=".QRActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".StoreImActivity"
-            android:exported="false"
-            tools:ignore="DuplicateActivity" />
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCTpXYkurK182vE0Em-j2BPv4vxT46Q8DE" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".MapFragment"
             android:exported="false"
-            android:label="@string/title_activity_maps" />
+            android:label="MapFragment" />
         <activity
             android:name=".MainActivity"
             android:exported="false"></activity>
