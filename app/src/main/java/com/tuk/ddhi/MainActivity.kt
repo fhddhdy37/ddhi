@@ -24,6 +24,15 @@ class MainActivity : AppCompatActivity() {
         finish()  // Close MainActivity so that the back button doesn't return to it
 
         requestLocationPermission()
+
+        bind.btn4.setOnClickListener {
+            var intent = Intent(this, QRActivity::class.java)
+            startActivity(intent)
+        }
+        bind.db.setOnClickListener {
+            var intent = Intent(this, DbTestActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun requestLocationPermission() {

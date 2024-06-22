@@ -19,7 +19,9 @@
         <activity
             android:name=".StoreImActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -29,6 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+            android:name=".DbTestActivity"
+            android:exported="false" />
         <activity
             android:name=".QRActivity"
             android:exported="false" />
