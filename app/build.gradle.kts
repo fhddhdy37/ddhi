@@ -1,8 +1,7 @@
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -38,14 +37,10 @@ android {
     viewBinding {
         enable = true
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
 
-    implementation(libs.gson)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -54,22 +49,16 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    
-    // extension libraries
-    // 외부 라이브러리는 여기에 작성
-    implementation ("com.google.android.gms:play-services-maps:18.0.2")
-    implementation ("com.google.android.gms:play-services-location:19.0.1")
+
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database-ktx")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
+    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+    implementation ("com.google.android.gms:play-services-location:19.0.1")
     implementation ("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
-    implementation(libs.zxing.android.embedded)
-    implementation(libs.firebase.database)
-    implementation(libs.firebase.auth)
-    //implementation(libs.firebase.auth.ktx)
-    //implementation(libs.firebase.database)
-    implementation(libs.play.services.maps)
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
 }

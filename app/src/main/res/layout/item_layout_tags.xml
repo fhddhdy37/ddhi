@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="qwerty >"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="#8258FA" />
 
 </LinearLayout>
