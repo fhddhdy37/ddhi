@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tuk.ddhi.databinding.ActivityBottomBinding
 
-class BottomActivity : AppCompatActivity() {
+class bottomActivity : AppCompatActivity() {
 
     private var mBinding: ActivityBottomBinding? = null
     private val binding get() = mBinding!!

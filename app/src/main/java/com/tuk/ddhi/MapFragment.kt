@@ -1,7 +1,6 @@
 package com.tuk.ddhi
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -64,10 +63,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         mMap.setInfoWindowAdapter(CustomInfoWindowAdapter())
 
-        for(i in fakestoreList.indices){
-            addNewMarker(fakestoreList[i].address, fakestoreList[i].title)
-        }
-
         addNewMarker("경기 시흥시 중심상가로 184", "제주 은희네 해장국")
         addNewMarker("경기 시흥시 중심상가 1길 18", "초지일관")
     }
@@ -79,6 +74,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     location?.let {
                         val currentLocation = LatLng(it.latitude, it.longitude)
                         Log.d("onMap", "Current location: ${it.latitude}, ${it.longitude}")
+                        mMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
                     } ?: run {
                         Log.e("onMap", "Location is null")
@@ -158,8 +154,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
 
         override fun onInfoWindowClick(p0: Marker) {
-            val intent = Intent(activity, StoreImActivity::class.java)
-            startActivity(intent)
+            // Implement info window click behavior
         }
     }
 

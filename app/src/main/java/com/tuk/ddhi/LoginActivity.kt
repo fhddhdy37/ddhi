@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         mFirebaseAuth = FirebaseAuth.getInstance()
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("DDHI")
 
         mEtEmail = findViewById(R.id.et_email)
         mEtPwd = findViewById(R.id.et_pwd)
@@ -37,8 +38,7 @@ class LoginActivity : AppCompatActivity() {
             { task ->
 
                 if(task.isSuccessful()) {
-                    // firebase 연동이 안되서인지 모르겠으나 다시 main activity로 돌아오는 오류 존재
-                    var intent: Intent = Intent(this, BottomActivity::class.java)
+                    var intent: Intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
@@ -48,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
+
         var btn_register = findViewById<Button>(R.id.btn_register)
         btn_register.setOnClickListener {
             var intent: Intent = Intent(this, RegisterActivity::class.java)
