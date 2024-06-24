@@ -22,10 +22,10 @@ class Frag4 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val couponList = listOf(
-            CouponUsage("OO피자", "2024-01-15"),
-            CouponUsage("어쩌구저쩌구스테이크", "2024-02-10"),
-            CouponUsage("ODOXDOX치킨", "2024-03-20"),
-            CouponUsage("어쩌구저쩌구", "2024-05-10"),
+            CouponUsage("명륜진사갈비", "2024-01-15"),
+            CouponUsage("샤브린", "2024-02-10"),
+            CouponUsage("신오돌불닭발", "2024-03-20"),
+            CouponUsage("육장인", "2024-05-10"),
         )
 
         val adapter = CouponUsageAdapter(couponList)
